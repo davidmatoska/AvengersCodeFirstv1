@@ -14,6 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Pays_nom)
         </th>
+        <th>
+            Drapeau
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +24,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Pays_nom)
+        </td>
+        <td>
+            <img src="~/File?id=@item.Files.First(f => f.FileType == Avengers.Models.FileType.Drapeau).FileId" height="150" width="150" alt="drapeau" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PaysID }) |

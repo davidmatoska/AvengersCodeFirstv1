@@ -8,6 +8,8 @@ namespace Avengers.Models
     public enum FileType
     {
         Symbole = 1, Logo,
-        Photo = 2, Picture
+        Photo = 2, Picture,
+        Drapeau = 3, Drapeaux
+
     }
 }

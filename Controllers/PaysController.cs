@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -27,7 +28,8 @@ namespace Avengers.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pays pays = db.Pays.Find(id);
+            Pays pays = db.Pays.Include(s => s.Files).SingleOrDefault(s => s.PaysID == id);
+            
             if (pays == null)
             {
                 return HttpNotFound();
@@ -46,10 +48,24 @@ namespace Avengers.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PaysID,Pays_nom")] Pays pays)
+        public ActionResult Create([Bind(Include = "PaysID,Pays_nom")] Pays pays, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var drapeau = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Drapeau,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        drapeau.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    pays.Files = new List<File> { drapeau };
+                }
                 db.Pays.Add(pays);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,7 +81,7 @@ namespace Avengers.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pays pays = db.Pays.Find(id);
+            Pays pays = db.Pays.Include(s => s.Files).SingleOrDefault(s => s.PaysID == id);
             if (pays == null)
             {
                 return HttpNotFound();
@@ -78,15 +94,48 @@ namespace Avengers.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PaysID,Pays_nom")] Pays pays)
+        public ActionResult Edit(int? id, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(pays).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(pays);
+            var PaysUpdate = db.Pays.Find(id);
+            if (TryUpdateModel(PaysUpdate, "",
+                new string[] { "Pays_Nom"}))
+            {
+                try
+                {
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        if (PaysUpdate.Files.Any(f => f.FileType == FileType.Drapeau))
+                        {
+                            db.Files.Remove(PaysUpdate.Files.First(f => f.FileType == FileType.Drapeau));
+                        }
+                        var drapeau = new File
+                        {
+                            FileName = System.IO.Path.GetFileName(upload.FileName),
+                            FileType = FileType.Drapeau,
+                            ContentType = upload.ContentType
+                        };
+                        using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                        {
+                            drapeau.Content = reader.ReadBytes(upload.ContentLength);
+                        }
+                        PaysUpdate.Files = new List<File> { drapeau };
+                    }
+                    db.Entry(PaysUpdate).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(PaysUpdate);
         }
 
         // GET: Pays/Delete/5

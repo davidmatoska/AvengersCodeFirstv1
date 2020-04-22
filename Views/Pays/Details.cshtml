@@ -13,6 +13,15 @@
         <dt>
             @Html.DisplayNameFor(model => model.Pays_nom)
         </dt>
+        @if (Model.Files.Any(f => f.FileType == FileType.Drapeau))
+        {
+            <dt>
+                Drapeau
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Drapeau).FileId" alt="drapeau" />
+            </dd>
+        }
 
         <dd>
             @Html.DisplayFor(model => model.Pays_nom)
