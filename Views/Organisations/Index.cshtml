@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Avengers.Models.Organisation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pays.Pays_nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Denomination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_de_creation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pays.Pays_nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Denomination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_de_creation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrganisationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrganisationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrganisationID })
+        </td>
+    </tr>
+}
+
+</table>

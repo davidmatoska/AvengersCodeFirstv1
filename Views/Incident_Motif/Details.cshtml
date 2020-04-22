@@ -1,0 +1,36 @@
+﻿@model Avengers.Models.Incident_Motif
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Incident_Motif</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (Model.Files.Any(f => f.FileType == Avengers.Models.FileType.Symbole))
+        {
+            <dt>
+                Symbole
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == Avengers.Models.FileType.Symbole).FileId" height="150" width="150" alt="symbole" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Incident_MotifID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

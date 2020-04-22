@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Avengers.Models.Mission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Heros.Pseudonyme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Incident.Contexte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mechant.Pseudonyme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Statut_Mission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Commentaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Mission)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Heros.Pseudonyme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Incident.Contexte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mechant.Pseudonyme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Statut_Mission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Commentaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Mission)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MissionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MissionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MissionID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Avengers.Models.Incident>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Incident_Motif.Motif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pays.Pays_nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contexte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </th>
+        <th>
+               Photo de l'incident
+        </th>
+        <th>
+            Symbole
+            incident
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Incident)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Incident_Motif.Motif)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pays.Pays_nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contexte)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Adresse)
+    </td>
+    <td>
+        <img src="~/File?id=@item.Files.First(f => f.FileType == Avengers.Models.FileType.Photo).FileId" height="50" width="50" alt="photo" />
+    </td>
+    <td>
+        <img src="~/File?id=@item.Incident_Motif.Files.First(f => f.FileType == Avengers.Models.FileType.Symbole).FileId" height="50" width="50" alt="symbole" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date_Incident)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IncidentID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.IncidentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IncidentID })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model Avengers.Models.Organisation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Organisation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pays.Pays_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pays.Pays_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Denomination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Denomination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_de_creation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_de_creation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrganisationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

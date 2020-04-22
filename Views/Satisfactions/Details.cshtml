@@ -1,0 +1,74 @@
+﻿@model Avengers.Models.Satisfaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Satisfaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mission.Commentaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mission.Commentaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Niveau_Satisfaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Niveau_Satisfaction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commentaires)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commentaires)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identification_Heros_Mechant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identification_Heros_Mechant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depot_Plainte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depot_Plainte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Plainte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Plainte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Satisfaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Satisfaction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SatisfactionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

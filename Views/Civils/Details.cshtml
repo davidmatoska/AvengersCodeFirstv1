@@ -1,0 +1,90 @@
+﻿@model Avengers.Models.Civil
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Civil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Heros.Pseudonyme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heros.Pseudonyme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mechant.Pseudonyme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mechant.Pseudonyme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pays.Pays_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pays.Pays_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Civilite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Civilite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_de_naissance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_de_naissance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CivilID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

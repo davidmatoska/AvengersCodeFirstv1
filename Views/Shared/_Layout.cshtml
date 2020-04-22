@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AVENGERS ALERT SYSTEM</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar  navbar-inverse   navbar-fixed-top">
+        <div class="container ">
+            <div class="navbar-header  ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+                @Html.ActionLink("AVENGERS ALERT SYSTEM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                
+                <ul class="nav navbar-nav">
+
+                    <li><img src="https://i.ibb.co/d6qVZj5/unnamed.png" width="50" height="50"></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ADMINISTRATION
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">@Html.ActionLink("UTILISATEURS", "Index", "ApplicationUsers")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("ROLES", "Index", "CustomRoles")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("HABILITATIONS", "Index", "CustomUserRoles")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("PAYS", "Index", "Pays")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("CIVILS", "Index", "Civils")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("ORGANISATIONS", "Index", "Organisations")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("HEROS", "Index", "Heros")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("MECHANTS", "Index", "Mechants")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("MOTIFS INCIDENTS", "Index", "Incident_Motif")</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MODERATION
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">@Html.ActionLink("INCIDENTS", "Index", "Incidents")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("MISSIONS", "Index", "Missions")</a>
+
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ACTIVITE HEROS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">@Html.ActionLink("MISSIONS", "Index", "Missions")</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("RAPPORTS MISSIONS", "Index", "RapportMissions")</a>
+
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SUIVI
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">@Html.ActionLink("SUIVI APRES INTERVENTIONS", "Index", "Satisfactions")</a>
+
+
+                        </div>
+                    </li>
+
+                    <li>@Html.ActionLink("CONTACT", "Contact", "Home")</li>
+
+
+
+
+
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        
+    </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - AVENGERS ALERT SYSTEM</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

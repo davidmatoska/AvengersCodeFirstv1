@@ -1,0 +1,66 @@
+﻿@model Avengers.Models.Mission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Heros.Pseudonyme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heros.Pseudonyme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Incident.Contexte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Incident.Contexte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mechant.Pseudonyme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mechant.Pseudonyme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Statut_Mission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Statut_Mission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commentaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commentaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Mission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Mission)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MissionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model Avengers.Models.Pays
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pays</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pays_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pays_nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PaysID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

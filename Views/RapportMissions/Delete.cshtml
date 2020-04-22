@@ -1,0 +1,56 @@
+﻿@model Avengers.Models.RapportMission
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RapportMission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HerosID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HerosID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentaireMission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentaireMission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRapport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRapport)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

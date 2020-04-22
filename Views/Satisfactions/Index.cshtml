@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Avengers.Models.Satisfaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission.Commentaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Niveau_Satisfaction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Commentaires)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identification_Heros_Mechant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Depot_Plainte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motif_Plainte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Satisfaction)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mission.Commentaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Niveau_Satisfaction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Commentaires)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identification_Heros_Mechant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Depot_Plainte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motif_Plainte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Satisfaction)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SatisfactionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SatisfactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SatisfactionID })
+        </td>
+    </tr>
+}
+
+</table>

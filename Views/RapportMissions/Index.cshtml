@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Avengers.Models.RapportMission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HerosID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentaireMission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRapport)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HerosID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentaireMission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRapport)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RapportMissionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RapportMissionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RapportMissionID })
+        </td>
+    </tr>
+}
+
+</table>

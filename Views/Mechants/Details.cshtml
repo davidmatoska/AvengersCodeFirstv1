@@ -1,0 +1,58 @@
+﻿@model Avengers.Models.Mechant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mechant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Civil.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Civil.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CivilID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CivilID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pseudonyme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pseudonyme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_Mechant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_Mechant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MechantID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
