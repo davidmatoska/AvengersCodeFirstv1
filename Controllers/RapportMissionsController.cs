@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -27,7 +28,8 @@ namespace Avengers.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RapportMission rapportMission = db.RapportMissions.Find(id);
+            RapportMission rapportMission = db.RapportMissions.Include(s => s.Files).SingleOrDefault(s => s.RapportMissionID == id);
+           
             if (rapportMission == null)
             {
                 return HttpNotFound();
@@ -46,10 +48,24 @@ namespace Avengers.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RapportMissionID,IncidentID,HerosID,CommentaireMission,DateRapport")] RapportMission rapportMission)
+        public ActionResult Create([Bind(Include = "RapportMissionID,IncidentID,HerosID,CommentaireMission,DateRapport")] RapportMission rapportMission, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var preuve = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Preuve,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        preuve.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    rapportMission.Files = new List<File> { preuve };
+                }
                 db.RapportMissions.Add(rapportMission);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,7 +81,7 @@ namespace Avengers.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RapportMission rapportMission = db.RapportMissions.Find(id);
+            RapportMission rapportMission = db.RapportMissions.Include(s => s.Files).SingleOrDefault(s => s.RapportMissionID == id);
             if (rapportMission == null)
             {
                 return HttpNotFound();
@@ -78,15 +94,48 @@ namespace Avengers.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RapportMissionID,IncidentID,HerosID,CommentaireMission,DateRapport")] RapportMission rapportMission)
+        public ActionResult Edit(int? id, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(rapportMission).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(rapportMission);
+            var RapportUpdate = db.RapportMissions.Find(id);
+            if (TryUpdateModel(RapportUpdate, "",
+                new string[] { " " }))
+            {
+                try
+                {
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        if (RapportUpdate.Files.Any(f => f.FileType == FileType.Preuve))
+                        {
+                            db.Files.Remove(RapportUpdate.Files.First(f => f.FileType == FileType.Preuve));
+                        }
+                        var preuve = new File
+                        {
+                            FileName = System.IO.Path.GetFileName(upload.FileName),
+                            FileType = FileType.Preuve,
+                            ContentType = upload.ContentType
+                        };
+                        using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                        {
+                            preuve.Content = reader.ReadBytes(upload.ContentLength);
+                        }
+                        RapportUpdate.Files = new List<File> { preuve };
+                    }
+                    db.Entry(RapportUpdate).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(RapportUpdate);
         }
 
         // GET: RapportMissions/Delete/5
