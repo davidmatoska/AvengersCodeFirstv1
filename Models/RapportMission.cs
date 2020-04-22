@@ -12,7 +12,7 @@ namespace Avengers.Models
 
         public int RapportMissionID { get; set; }
 
-        public int IncidentID { get; set; }
+        public int MissionID { get; set; }
 
         public int HerosID { get; set; }
 
@@ -20,6 +20,8 @@ namespace Avengers.Models
 
         [DataType(DataType.Date)]
         public DateTime DateRapport { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
 
 
 

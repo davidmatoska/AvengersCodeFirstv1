@@ -25,5 +25,6 @@ namespace Avengers.Models
         public virtual Pays Pays { get; set; }
 
         public virtual Heros Heros { get; set; }
+        public virtual RapportMission RapportMission { get; set; }
     }
 }

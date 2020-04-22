@@ -10,7 +10,8 @@ namespace Avengers.Models
         Symbole = 1, Logo,
         Photo = 2, Picture,
         Drapeau = 3, Drapeaux,
-        Hero = 4, Heros
+        Hero = 4, Heros,
+        Preuve = 5, Preuves
 
     }
 }
