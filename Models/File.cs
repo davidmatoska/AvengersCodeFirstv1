@@ -22,5 +22,6 @@ namespace Avengers.Models
         public virtual Incident_Motif Incident_Motif { get; set; }
 
         public virtual Incident Incident { get; set; }
+        public virtual Pays Pays { get; set; }
     }
 }

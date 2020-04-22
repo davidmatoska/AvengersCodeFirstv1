@@ -21,5 +21,7 @@ namespace Avengers.Models
         public ICollection<Organisation> Organisations { get; set; }
 
         public ICollection<Incident> Incidents { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
     }
 }
