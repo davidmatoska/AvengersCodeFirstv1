@@ -34,13 +34,15 @@
             @Html.DisplayFor(model => model.Telephone_Secret)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image_Heros)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image_Heros)
-        </dd>
+        @if (Model.Files.Any(f => f.FileType == FileType.Hero))
+        {
+            <dt>
+                Photo du Héro
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Hero).FileId" alt="hero" />
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.Disponible)

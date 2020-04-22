@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Telephone_Secret)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image_Heros)
+            Photo du Héro
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Disponible)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Telephone_Secret)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image_Heros)
+            <img src="~/File?id=@item.Files.First(f => f.FileType == Avengers.Models.FileType.Hero).FileId" height="150" width="150" alt="Hero" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Disponible)

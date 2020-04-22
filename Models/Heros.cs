@@ -29,5 +29,6 @@ namespace Avengers.Models
         public virtual Civil Civil { get; set; }
 
         public ICollection<Mission> Missions { get; set; }
+        public virtual ICollection<File> Files { get; set; }
     }
 }

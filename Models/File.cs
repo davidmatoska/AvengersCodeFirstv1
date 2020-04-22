@@ -23,5 +23,7 @@ namespace Avengers.Models
 
         public virtual Incident Incident { get; set; }
         public virtual Pays Pays { get; set; }
+
+        public virtual Heros Heros { get; set; }
     }
 }
