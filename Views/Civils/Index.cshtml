@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Recherche par nom: @Html.TextBox("SearchString")
+        <input type="submit" value="Recherche" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -18,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Mechant.Pseudonyme)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pays.Pays_nom)
+            @Html.ActionLink("Pays", "Index", new { sortOrder = ViewBag.PaysSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.User.Email)
@@ -26,9 +33,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Prenom)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.ActionLink("Nom", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Civilite)
         </th>
@@ -36,46 +45,48 @@
             @Html.DisplayNameFor(model => model.Adresse)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date_de_naissance)
+            @Html.ActionLink("Date de Naissance", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Heros.Pseudonyme)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mechant.Pseudonyme)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pays.Pays_nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prenom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Civilite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_de_naissance)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CivilID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CivilID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CivilID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heros.Pseudonyme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mechant.Pseudonyme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pays.Pays_nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Civilite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_de_naissance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CivilID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CivilID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CivilID })
+            </td>
+        </tr>
+    }
 
 </table>

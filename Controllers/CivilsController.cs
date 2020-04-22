@@ -15,9 +15,36 @@ namespace Avengers.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Civils
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PaysSortParm = String.IsNullOrEmpty(sortOrder) ? "Pays_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var civils = db.Civils.Include(c => c.Heros).Include(c => c.Mechant).Include(c => c.Pays).Include(c => c.User);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                civils = civils.Where(s => s.Nom.Contains(searchString)
+                                       || s.Prenom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    civils = civils.OrderByDescending(s => s.Nom);
+                    break;
+                case "Date":
+                    civils = civils.OrderBy(s => s.Date_de_naissance);
+                    break;
+                case "date_desc":
+                    civils = civils.OrderByDescending(s => s.Date_de_naissance);
+                    break;
+                
+                case "Pays_desc":
+                    civils = civils.OrderByDescending(s => s.Pays.Pays_nom);
+                    break;
+                default:
+                    civils = civils.OrderBy(s => s.Nom);
+                    break;
+            }
             return View(civils.ToList());
         }
 
