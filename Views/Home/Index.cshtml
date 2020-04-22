@@ -2,10 +2,38 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="jumbotron">
+    <div class="jumbotron" style="text-align:center">
 
-        <h3>Lancer une <img src="https://i.ibb.co/937mkPL/logo.png" width="50" height="50">lerte</h3>
+        <h2>Lancer une <img src="https://i.ibb.co/937mkPL/logo.png" width="50" height="50">lerte</h2>
 
-        <p><a href="~/Incidents/Create" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">ALERTE</a></p>
+        <p><a href="~/Incidents/Create" class="btn btn-danger btn-block btn-lg active" role="button" aria-pressed="true">ALERTE</a></p>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4" >
+            <h4>Déclarer un Litige</h4>
+            <p>
+                Si vous pensez avoir subi des dommages liés à l'une de nos interventions.
+            </p>
+            <p><a href="~/Litiges/Create" class="btn btn-info active" role="button" aria-pressed="true">LITIGE</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Devenir Héros</h4>
+            <p>
+                Vous avez des capacités hors du commun ? Les Avengers recrutent !
+            </p>
+            <p><a href="~/Home/Contact" class="btn btn-info active" role="button" aria-pressed="true">DEVENIR HEROS</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Je suis Méchant</h4>
+            <p>
+                Et je veux dévoiler mes plans machiavéliques, comme dans les films.
+            </p>
+            <p><a href="~/Home/Contact" class="btn btn-info active" role="button" aria-pressed="true">DEVOILER MES PLANS</a></p>
+        </div>
+
     </div>
 

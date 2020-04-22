@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidentsController.cs" />
     <Compile Include="Controllers\Incident_MotifController.cs" />
+    <Compile Include="Controllers\LitigesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MechantsController.cs" />
     <Compile Include="Controllers\MissionsController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Incident.cs" />
     <Compile Include="Models\Incident_Motif.cs" />
+    <Compile Include="Models\Litige.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Mechant.cs" />
     <Compile Include="Models\Mission.cs" />
@@ -308,16 +310,6 @@
     <Content Include="Views\Pays\Details.cshtml" />
     <Content Include="Views\Pays\Edit.cshtml" />
     <Content Include="Views\Pays\Index.cshtml" />
-    <Content Include="Views\RapportMissions\Create.cshtml" />
-    <Content Include="Views\RapportMissions\Delete.cshtml" />
-    <Content Include="Views\RapportMissions\Details.cshtml" />
-    <Content Include="Views\RapportMissions\Edit.cshtml" />
-    <Content Include="Views\RapportMissions\Index.cshtml" />
-    <Content Include="Views\Satisfactions\Create.cshtml" />
-    <Content Include="Views\Satisfactions\Delete.cshtml" />
-    <Content Include="Views\Satisfactions\Details.cshtml" />
-    <Content Include="Views\Satisfactions\Edit.cshtml" />
-    <Content Include="Views\Satisfactions\Index.cshtml" />
     <Content Include="Views\Missions\Create.cshtml" />
     <Content Include="Views\Missions\Delete.cshtml" />
     <Content Include="Views\Missions\Details.cshtml" />
@@ -328,6 +320,21 @@
     <Content Include="Views\Heros\Index.cshtml" />
     <Content Include="Views\Heros\Details.cshtml" />
     <Content Include="Views\Heros\Delete.cshtml" />
+    <Content Include="Views\RapportMissions\Create.cshtml" />
+    <Content Include="Views\RapportMissions\Delete.cshtml" />
+    <Content Include="Views\RapportMissions\Details.cshtml" />
+    <Content Include="Views\RapportMissions\Edit.cshtml" />
+    <Content Include="Views\RapportMissions\Index.cshtml" />
+    <Content Include="Views\Satisfactions\Create.cshtml" />
+    <Content Include="Views\Satisfactions\Delete.cshtml" />
+    <Content Include="Views\Satisfactions\Details.cshtml" />
+    <Content Include="Views\Satisfactions\Edit.cshtml" />
+    <Content Include="Views\Satisfactions\Index.cshtml" />
+    <Content Include="Views\Litiges\Create.cshtml" />
+    <Content Include="Views\Litiges\Delete.cshtml" />
+    <Content Include="Views\Litiges\Details.cshtml" />
+    <Content Include="Views\Litiges\Edit.cshtml" />
+    <Content Include="Views\Litiges\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

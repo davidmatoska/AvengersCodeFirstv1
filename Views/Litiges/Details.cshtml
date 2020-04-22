@@ -1,0 +1,42 @@
+﻿@model Avengers.Models.Litige
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Litige</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaisonLitige)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaisonLitige)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLitige)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLitige)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LitigeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

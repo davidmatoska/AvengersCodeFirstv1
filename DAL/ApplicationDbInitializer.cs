@@ -64,6 +64,10 @@ namespace Avengers.DAL
             satisfactions.ForEach(s => context.Satisfactions.Add(s));
             context.SaveChanges();
 
+            var litiges = new List<Litige> { };
+            litiges.ForEach(s => context.Litiges.Add(s));
+            context.SaveChanges();
+
 
 
 

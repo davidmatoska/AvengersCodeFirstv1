@@ -41,7 +41,7 @@ namespace Avengers.Controllers
         // GET: Heros/Create
         public ActionResult Create()
         {
-            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "Prenom");
+            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "NomComplet");
             return View();
         }
 
@@ -73,7 +73,7 @@ namespace Avengers.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "Prenom", heros.HerosID);
+            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "NomComplet", heros.HerosID);
             return View(heros);
         }
 
@@ -89,7 +89,7 @@ namespace Avengers.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "Prenom", heros.HerosID);
+            ViewBag.HerosID = new SelectList(db.Civils, "CivilID", "NomComplet", heros.HerosID);
             return View(heros);
         }
 

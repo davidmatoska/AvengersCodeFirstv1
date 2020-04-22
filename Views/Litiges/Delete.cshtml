@@ -1,4 +1,4 @@
-﻿@model Avengers.Models.RapportMission
+﻿@model Avengers.Models.Litige
 
 @{
     ViewBag.Title = "Delete";
@@ -8,31 +8,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>RapportMission</h4>
+    <h4>Litige</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Mission.Commentaire)
+            @Html.DisplayNameFor(model => model.User.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Mission.Commentaire)
+            @Html.DisplayFor(model => model.User.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CommentaireMission)
+            @Html.DisplayNameFor(model => model.RaisonLitige)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CommentaireMission)
+            @Html.DisplayFor(model => model.RaisonLitige)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateRapport)
+            @Html.DisplayNameFor(model => model.DateLitige)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DateRapport)
+            @Html.DisplayFor(model => model.DateLitige)
         </dd>
 
     </dl>

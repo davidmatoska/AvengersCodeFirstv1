@@ -11,29 +11,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MissionID)
+            @Html.DisplayNameFor(model => model.Mission.Commentaire)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MissionID)
+            @Html.DisplayFor(model => model.Mission.Commentaire)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HerosID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HerosID)
-        </dd>
-        @if (Model.Files.Any(f => f.FileType == FileType.Preuve))
-        {
-            <dt>
-                Preuve de résolution ou non
-            </dt>
-            <dd>
-                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Preuve).FileId" alt="preuve" />
-            </dd>
-        }
         <dt>
             @Html.DisplayNameFor(model => model.CommentaireMission)
         </dt>

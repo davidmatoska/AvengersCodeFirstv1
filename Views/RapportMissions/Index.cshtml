@@ -12,16 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MissionID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HerosID)
+            @Html.DisplayNameFor(model => model.Mission.Commentaire)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CommentaireMission)
-        </th>
-        <th>
-            Preuve de la résolution de l'incident
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateRapport)
@@ -32,16 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.MissionID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HerosID)
+            @Html.DisplayFor(modelItem => item.Mission.Commentaire)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CommentaireMission)
-        </td>
-        <td>
-            <img src="~/File?id=@item.Files.First(f => f.FileType == Avengers.Models.FileType.Preuve).FileId" height="150" width="150" alt="preuve" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateRapport)

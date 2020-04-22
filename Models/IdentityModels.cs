@@ -12,7 +12,7 @@ namespace Avengers.Models
     public class ApplicationUser : IdentityUser<int, CustomUserLogin, CustomUserRole,
     CustomUserClaim>
     {
-
+        public ICollection<Litige> Litiges { get; set; }
         public ICollection<Incident> Incidents { get; set; }
 
         public virtual Civil Civil { get; set; }
@@ -58,9 +58,13 @@ namespace Avengers.Models
 
         public DbSet<Mission> Missions { get; set; }
 
+        //public DbSet<RapportMission> RapportMissions { get; set; }
+
         public DbSet<Satisfaction> Satisfactions { get; set; }
 
         public DbSet<File> Files { get; set; }
+
+        public DbSet<Litige> Litiges { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -83,11 +87,17 @@ namespace Avengers.Models
                 .HasRequired(m => m.Satisfaction)
                 .WithRequiredPrincipal(s => s.Mission);
 
+            modelBuilder.Entity<Mission>()
+               .HasRequired(m => m.RapportMission)
+               .WithRequiredPrincipal(r => r.Mission);
+
         }
 
         public DbSet<CustomUserRole> CustomUserRoles { get; set; }
 
         public System.Data.Entity.DbSet<Avengers.Models.RapportMission> RapportMissions { get; set; }
+
+        // public System.Data.Entity.DbSet<Avengers.Models.RapportMission> RapportMissions { get; set; }
 
 
 

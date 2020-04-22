@@ -36,7 +36,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Date_Incident)
         </th>
-        <th></th>
+        <th>
+           Créer Mission
+
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -70,6 +73,10 @@
         @Html.ActionLink("Details", "Details", new { id = item.IncidentID }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.IncidentID })
     </td>
+    <td>
+        <p><a href="~/Missions/Create" class="btn btn-info active" role="button" aria-pressed="true">MISSION</a></p>
+    </td>
+
 </tr>
 }
 

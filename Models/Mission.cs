@@ -34,7 +34,9 @@ namespace Avengers.Models
 
             public virtual Mechant Mechant { get; set; }
 
-            public virtual Satisfaction Satisfaction { get; set; }
+        public virtual RapportMission RapportMission { get; set; }
+
+        public virtual Satisfaction Satisfaction { get; set; }
 
 
 
